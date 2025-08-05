@@ -1,0 +1,39 @@
+{
+  "name": "worker-assignment-ml",
+  "version": "1.0.0",
+  "description": "A Node.js machine learning project for assigning workers to jobs based on historical performance data",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "node test.js",
+    "generate-data": "node scripts/generateHistoricalData.js",
+    "load-csv": "node scripts/loadFromCSV.js",
+    "export-csv": "node scripts/loadFromCSV.js --export",
+    "debug": "node scripts/debugDemo.js",
+    "view-data": "ls -la data/ && echo '\n📊 Data Summary:' && head -10 data/historical_data.csv"
+  },
+  "keywords": [
+    "machine-learning",
+    "nodejs",
+    "worker-assignment",
+    "optimization",
+    "data-science"
+  ],
+  "author": "Developer",
+  "license": "MIT",
+  "dependencies": {
+    "ml-matrix": "^6.10.7",
+    "ml-regression": "^5.0.0",
+    "ml-knn": "^3.0.0",
+    "lodash": "^4.17.21",
+    "csv-parser": "^3.0.0",
+    "csv-writer": "^1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

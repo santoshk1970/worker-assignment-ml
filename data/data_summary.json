@@ -1,0 +1,144 @@
+{
+  "totalRecords": 1667,
+  "dateRange": {
+    "earliest": "2023-01-01",
+    "latest": "2024-12-31"
+  },
+  "workerStats": {
+    "john": {
+      "name": "John",
+      "experience": 1.8556826652382155,
+      "specialization": 3,
+      "skillLevel": 0.8065114992311477,
+      "totalJobs": 214,
+      "avgTime": 19.52803738317757,
+      "avgQuality": 6.205140186915885,
+      "efficiency": 0.317755443886097
+    },
+    "priya": {
+      "name": "Priya",
+      "experience": 7.219200508767444,
+      "specialization": 5,
+      "skillLevel": 0.6169694639774357,
+      "totalJobs": 204,
+      "avgTime": 22.725490196078432,
+      "avgQuality": 4.670098039215684,
+      "efficiency": 0.20550043140638471
+    },
+    "edward": {
+      "name": "Edward",
+      "experience": 1.5849157543574734,
+      "specialization": 1,
+      "skillLevel": 0.8231828013031468,
+      "totalJobs": 204,
+      "avgTime": 22.07843137254902,
+      "avgQuality": 6.033823529411761,
+      "efficiency": 0.2732904085257547
+    },
+    "raj": {
+      "name": "Raj",
+      "experience": 9.128211843514395,
+      "specialization": 2,
+      "skillLevel": 0.7324345048247032,
+      "totalJobs": 202,
+      "avgTime": 19.806930693069308,
+      "avgQuality": 5.5960396039603975,
+      "efficiency": 0.2825293676580855
+    },
+    "sarah": {
+      "name": "Sarah",
+      "experience": 8.594685329298503,
+      "specialization": 4,
+      "skillLevel": 0.908961753572448,
+      "totalJobs": 206,
+      "avgTime": 17.16504854368932,
+      "avgQuality": 7.131067961165052,
+      "efficiency": 0.4154411764705885
+    },
+    "ankit": {
+      "name": "Ankit",
+      "experience": 9.750310811669468,
+      "specialization": 1,
+      "skillLevel": 0.8145316836304815,
+      "totalJobs": 211,
+      "avgTime": 20.232227488151658,
+      "avgQuality": 6.2260663507109015,
+      "efficiency": 0.3077301475755447
+    },
+    "maria": {
+      "name": "Maria",
+      "experience": 3.6949511215210165,
+      "specialization": 2,
+      "skillLevel": 0.7315365879195994,
+      "totalJobs": 215,
+      "avgTime": 20.772093023255813,
+      "avgQuality": 5.517209302325584,
+      "efficiency": 0.2656068069861175
+    },
+    "vikram": {
+      "name": "Vikram",
+      "experience": 1.4514972882724422,
+      "specialization": 1,
+      "skillLevel": 0.7387698781529807,
+      "totalJobs": 211,
+      "avgTime": 23.976303317535546,
+      "avgQuality": 5.47014218009479,
+      "efficiency": 0.2281478553073731
+    }
+  },
+  "machineStats": {
+    "1": {
+      "name": "Machine 1",
+      "complexity": 0.6867327733183574,
+      "maintenanceState": "good",
+      "totalJobs": 339,
+      "avgTime": 15.755162241887906,
+      "avgQuality": 6.098525073746307,
+      "uniqueWorkers": 8
+    },
+    "2": {
+      "name": "Machine 2",
+      "complexity": 0.9650953923846388,
+      "maintenanceState": "good",
+      "totalJobs": 324,
+      "avgTime": 22.376543209876544,
+      "avgQuality": 6.2148148148148135,
+      "uniqueWorkers": 8
+    },
+    "3": {
+      "name": "Machine 3",
+      "complexity": 0.9590982921788952,
+      "maintenanceState": "good",
+      "totalJobs": 337,
+      "avgTime": 22.519287833827892,
+      "avgQuality": 6.142433234421365,
+      "uniqueWorkers": 8
+    },
+    "4": {
+      "name": "Machine 4",
+      "complexity": 0.8198061031114479,
+      "maintenanceState": "needs_maintenance",
+      "totalJobs": 335,
+      "avgTime": 24.244776119402985,
+      "avgQuality": 5.047462686567167,
+      "uniqueWorkers": 8
+    },
+    "5": {
+      "name": "Machine 5",
+      "complexity": 0.6997623564753299,
+      "maintenanceState": "good",
+      "totalJobs": 332,
+      "avgTime": 19.120481927710845,
+      "avgQuality": 5.792469879518073,
+      "uniqueWorkers": 8
+    }
+  },
+  "overallStats": {
+    "avgTime": 20.785842831433712,
+    "avgQuality": 5.857828434313134,
+    "minTime": 5,
+    "maxTime": 55,
+    "minQuality": 2.7,
+    "maxQuality": 10
+  }
+}
