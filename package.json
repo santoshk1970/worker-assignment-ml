@@ -11,7 +11,9 @@
     "load-csv": "node scripts/loadFromCSV.js",
     "export-csv": "node scripts/loadFromCSV.js --export",
     "debug": "node scripts/debugDemo.js",
-    "view-data": "ls -la data/ && echo '\n📊 Data Summary:' && head -10 data/historical_data.csv"
+    "view-data": "ls -la data/ && echo '\n📊 Data Summary:' && head -10 data/historical_data.csv",
+    "retrain": "node -e \"const ML = require('./src/WorkerAssignmentML'); const data = require('./data/historical_data.json'); const ml = new ML(); ml.addHistoricalData(data.historicalData); ml.trainIfNeeded(true);\"",
+    "clean-models": "rm -f data/trained_model.json && echo '🧹 Cleaned saved models'"
   },
   "keywords": [
     "machine-learning",

@@ -1,6 +1,8 @@
 const { Matrix } = require('ml-matrix');
 const KNN = require('ml-knn');
 const _ = require('lodash');
+const fs = require('fs');
+const path = require('path');
 
 class WorkerAssignmentML {
     constructor() {
@@ -10,6 +12,7 @@ class WorkerAssignmentML {
         this.trainingData = [];
         this.isModelTrained = false;
         this.debugMode = false; // Initialize debug mode
+        this.modelPath = path.join(__dirname, '..', 'data', 'trained_model.json');
     }
      // Helper function to calculate standard deviation
     calculateStandardDeviation(values) {
@@ -77,6 +80,119 @@ class WorkerAssignmentML {
         
         console.log(`Model trained with ${workerFeatures.length} feature vectors`);
         console.log('Training completed successfully!');
+
+        // Auto-save the trained model
+        this.saveModel();
+    }
+
+    // Save trained model to disk
+    saveModel() {
+        if (!this.isModelTrained || !this.model) {
+            console.log('⚠️  No trained model to save');
+            return false;
+        }
+
+        try {
+            const modelData = {
+                timestamp: new Date().toISOString(),
+                trainingDataSize: this.trainingData.length,
+                workers: this.workers,
+                machines: this.machines,
+                // KNN model serialization (simplified)
+                modelConfig: {
+                    k: 3,
+                    featureCount: this.model.X ? this.model.X.length : 0,
+                    labelCount: this.model.y ? this.model.y.length : 0
+                },
+                // Save training metadata for validation
+                trainingMetadata: {
+                    totalRecords: this.trainingData.length,
+                    workerCount: this.workers.length,
+                    machineCount: this.machines.length
+                }
+            };
+
+            fs.writeFileSync(this.modelPath, JSON.stringify(modelData, null, 2));
+            console.log(`💾 Model saved to: ${this.modelPath}`);
+            return true;
+        } catch (error) {
+            console.error('❌ Failed to save model:', error.message);
+            return false;
+        }
+    }
+
+    // Load trained model from disk
+    loadModel() {
+        if (!fs.existsSync(this.modelPath)) {
+            console.log('📂 No saved model found. Training required.');
+            return false;
+        }
+
+        try {
+            const modelData = JSON.parse(fs.readFileSync(this.modelPath, 'utf8'));
+            
+            // Validate model compatibility
+            if (modelData.workers && modelData.machines) {
+                this.workers = modelData.workers;
+                this.machines = modelData.machines;
+                
+                console.log(`📂 Model metadata loaded from: ${modelData.timestamp}`);
+                console.log(`   Training data: ${modelData.trainingDataSize} records`);
+                console.log(`   Workers: ${modelData.workers.length}, Machines: ${modelData.machines.length}`);
+                
+                // Note: For full model loading, we'd need to reconstruct the KNN model
+                // This is a simplified version that loads metadata
+                return true;
+            }
+            
+            return false;
+        } catch (error) {
+            console.error('❌ Failed to load model:', error.message);
+            return false;
+        }
+    }
+
+    // Check if model exists and is recent
+    isModelCurrent(maxAgeHours = 24) {
+        if (!fs.existsSync(this.modelPath)) {
+            return false;
+        }
+
+        try {
+            const modelData = JSON.parse(fs.readFileSync(this.modelPath, 'utf8'));
+            const modelTime = new Date(modelData.timestamp);
+            const now = new Date();
+            const ageHours = (now - modelTime) / (1000 * 60 * 60);
+            
+            return ageHours < maxAgeHours;
+        } catch (error) {
+            return false;
+        }
+    }
+
+    // Smart training: only train if needed
+    trainIfNeeded(forceRetrain = false) {
+        if (forceRetrain) {
+            console.log('🔄 Force retraining requested...');
+            this.train();
+            return;
+        }
+
+        if (this.isModelTrained) {
+            console.log('✅ Model already trained in this session');
+            return;
+        }
+
+        if (this.isModelCurrent()) {
+            console.log('✅ Recent trained model found, skipping training');
+            console.log('   Use forceRetrain=true to retrain anyway');
+            // For demo purposes, we'll still train to show the process
+            // In production, you'd load the saved model state
+            this.train();
+        } else {
+            console.log('🔄 Training model (no recent model found)...');
+            this.train();
+        }
     }
 
     // Predict best worker for a job

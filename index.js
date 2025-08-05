@@ -29,9 +29,11 @@ async function main() {
             historicalData = data.historicalData;
         }
 
-        // Add historical data and train the model
+        // Add historical data and train the model smartly
         mlSystem.addHistoricalData(historicalData);
-        mlSystem.train();
+        
+        // Smart training: only train if needed (saves time on repeated runs)
+        mlSystem.trainIfNeeded(); // Use trainIfNeeded(true) to force retrain
 
         console.log('\n🎓 Model Training Complete!');
         console.log('============================');

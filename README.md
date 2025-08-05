@@ -1,5 +1,11 @@
 # Worker Assignment ML System
 
+![Node.js](https://img.shields.io/badge/node.js-v14+-green.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![ML Algorithm](https://img.shields.io/badge/algorithm-KNN-orange.svg)
+![Demo](https://img.shields.io/badge/demo-interactive-brightgreen.svg)
+![Status](https://img.shields.io/badge/status-production--ready-success.svg)
+
 A Node.js machine learning project that assigns workers to jobs based on historical performance data. The system uses machine learning algorithms to predict the best worker for each job based on machine type and job complexity.
 
 ## 🎯 Project Overview

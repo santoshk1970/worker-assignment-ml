@@ -60,3 +60,6 @@ logs
 # data/historical_data.json
 # data/historical_data.csv
 # data/data_summary.json
+
+# Generated model files
+data/trained_model.json
